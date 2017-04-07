@@ -1,2 +1,2 @@
 # Local
-LBA
+LBA Membership database manager
