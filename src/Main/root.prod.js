@@ -4,20 +4,20 @@ import { Provider } from 'react-redux';
 import { createStore, compose, applyMiddleware } from 'redux';
 import persistState from 'redux-localstorage';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
-import { hashHistory } from 'react-router';
+import { hashHistory, browserHistory } from 'react-router';
 import thunk from 'redux-thunk';
 import Router from 'components/Router';
 import reducer from 'store/reducer';
 
 const finalCreateStore = compose(
-    applyMiddleware(thunk, routerMiddleware(hashHistory)),
+    applyMiddleware(thunk, routerMiddleware(browserHistory)),
     persistState('authentication')
 )(createStore);
 
 const store = finalCreateStore(reducer, {});
 
 
-const history = syncHistoryWithStore(hashHistory, store);
+const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
     <Provider store={store}>

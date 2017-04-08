@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, compose, applyMiddleware } from 'redux';
 import persistState from 'redux-localstorage';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
-import { hashHistory } from 'react-router';
+import { hashHistory, browserHistory } from 'react-router';
 import thunk from 'redux-thunk';
 import Router from 'main/components/Router';
 import reducer from 'main/store/reducer';
@@ -12,7 +12,7 @@ import reducer from 'main/store/reducer';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const finalCreateStore = composeEnhancers(
-    applyMiddleware(thunk, routerMiddleware(hashHistory)),
+    applyMiddleware(thunk, routerMiddleware(browserHistory)),
     persistState('authentication')
 )(createStore);
 
@@ -23,7 +23,7 @@ function getDebugSessionKey() {
 
 const store = finalCreateStore(reducer, {});
 
-const history = syncHistoryWithStore(hashHistory, store);
+const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
     <Provider store={store}>
