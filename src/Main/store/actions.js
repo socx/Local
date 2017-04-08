@@ -6,6 +6,6 @@ export function resetState() {
             type: 'RESET_STATE'
         }
         dispatch(action)
-        dispatch(push('/manage'))
+        dispatch(push('/login'))
     }
 }

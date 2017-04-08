@@ -1,7 +1,7 @@
 import React from 'react';
+import {Grid} from 'semantic-ui-react'
 
-//import 'node_modules/semantic-ui-css/semantic.css';
-//import 'node_modules/semantic-ui-css/semantic';
+import './style.scss'
 
 export default class Layout extends React.Component {
     constructor(props) {
@@ -10,11 +10,11 @@ export default class Layout extends React.Component {
 
     render() {
         return (
-            <div className="ui padded grid">
+            <Grid padded>
                 <div id="main-container">
                     {this.props.children}
                 </div>
-            </div>
+            </Grid>
         );
     }
 }
