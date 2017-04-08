@@ -6,7 +6,7 @@ import { connect }                                                  from 'react-
 import UrlSearchParams                                              from 'main/components/UrlSearchParams';
 import Layout                                                       from 'main/components/Layout';
 import ManageView                                                   from 'manage';
-import LoginView                                                    from 'authentication/components/LoginView';
+import LoginView                                                    from 'authentication';
 import * as authActions                                             from 'authentication/store/actions';
 
 

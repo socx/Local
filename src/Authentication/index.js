@@ -2,12 +2,11 @@ import React                    from 'react'
 import PropTypes                from 'prop-types';
 import { bindActionCreators }   from 'redux'
 import { connect }              from 'react-redux'
-import * as actions             from './actions'
+import * as actions             from './store/actions'
 import './style.scss';
 
 const mapStateToProps = (state) => ({
-    authentication : state.authentication,
-    login : state.login
+    authentication : state.authentication
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -54,7 +53,7 @@ export class LoginView extends React.Component {
         let loginButton = <button className={loginButtonCss} id="login-button" onClick={this.onLoginClicked}>Login<i className="arrow circle right icon"></i></button>
         let textBoxCss = 'ui input'
 
-        if(this.props.login.isFetching) {
+        if(this.props.authentication.isFetching) {
             loginButtonCss = 'ui loading button'
             loginButton = <button className={loginButtonCss} id="login-button">Login<i className="arrow circle right icon"></i></button>
             textBoxCss = 'ui disabled input'
