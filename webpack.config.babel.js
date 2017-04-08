@@ -13,6 +13,7 @@ const config = {
         alias: {
             main: resolve('./src/Main'),
             layout: resolve('./src/Main/components/Layout'),
+            authentication: resolve('./src/Authentication'),
             manage: resolve('./src/Manage'),
             node_modules: resolve('./node_modules')
         },

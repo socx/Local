@@ -13,7 +13,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const finalCreateStore = composeEnhancers(
     applyMiddleware(thunk, routerMiddleware(hashHistory)),
-    persistState('manage')
+    persistState('authentication')
 )(createStore);
 
 function getDebugSessionKey() {
@@ -29,4 +29,4 @@ ReactDOM.render(
     <Provider store={store}>
         <Router store={store} history={history} location={location} />
     </Provider>
-    , document.getElementById('react-container'))
+    , document.getElementById('app-container'))

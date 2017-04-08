@@ -11,7 +11,7 @@ import reducer from 'store/reducer';
 
 const finalCreateStore = compose(
     applyMiddleware(thunk, routerMiddleware(hashHistory)),
-    persistState('manage')
+    persistState('authentication')
 )(createStore);
 
 const store = finalCreateStore(reducer, {});
@@ -23,4 +23,4 @@ ReactDOM.render(
     <Provider store={store}>
         <Router store={store} history={history} location={location} />
     </Provider>
-    , document.getElementById('react-container'));
+    , document.getElementById('app-container'));
