@@ -3,6 +3,14 @@ import * as mainActions from 'main/store/actions';
 import constants from './constants';
 import { push } from 'react-router-redux';
 
+export const usernameChanged = (username) => {
+    return{ type : constants.USERNAME_CHANGED, payload: { username }}
+}
+
+export const passwordChanged = (password) => {
+    return{ type : constants.PASSWORD_CHANGED, payload: { password }}
+}
+
 export function setAuthToken(token, username) {
     return {
         type: constants.SET_AUTH_TOKEN,
@@ -24,6 +32,11 @@ export function login(username, password) {
     
     return (dispatch) => {
         if(apiConfig.DEMO_MODE) {
+            if(password === 'denyme'){
+                dispatch({ type: constants.LOGIN_FAILED, payload: {message : 'Login failed'} });
+                return;
+            }
+
             let payload = { username: username, token: Math.random().toString(18).substr(2, 32) };
             dispatch({ type: constants.LOGIN_SUCCESSFUL, payload });
             dispatch(setAuthToken(payload.token, payload.username));
