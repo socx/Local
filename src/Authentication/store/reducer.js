@@ -5,10 +5,10 @@ import { Map, List } from 'immutable';
 export const initialState = {    
     isFetching: false,
     hasFailed: false,
-    username: '',
 
     token: '',
     username: '',
+    password: '',
     errors: [],
 };
 
@@ -45,10 +45,17 @@ export default createReducer(initialState, {
     },
 
     [constants.LOGIN_FAILED] : (state, payload) => {
-        return Object.assign({}, state, {
-            isFetching: false,
-            hasFailed : true
-        })
+        let errors = state.errors;
+        errors.push(payload.message);
+        return  { ...state, isFetching: false, hasFailed : true, errors }
+    },
+
+    [constants.USERNAME_CHANGED] : (state, payload) => {
+        return {...state, username : payload.username}
+    },
+
+    [constants.PASSWORD_CHANGED] : (state, payload) => {
+        return {...state, password : payload.password}
     }
 
 });
