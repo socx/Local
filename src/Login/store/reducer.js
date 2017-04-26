@@ -5,43 +5,19 @@ import { Map, List } from 'immutable';
 export const initialState = {    
     isFetching: false,
     hasFailed: false,
-
-    token: '',
     username: '',
     password: '',
     errors: [],
 };
 
 export default createReducer(initialState, {
-    [constants.SET_AUTH_TOKEN]: (state, payload) => {
-        return {
-            ...state,
-            token: payload.token,
-            username: payload.username
-        };
-    },
-
-    [constants.CLEAR_AUTH_TOKEN]: (state, payload) => {
-        return {
-            ...state,
-            token: '',
-            username: ''
-        };
-    },
 
     [constants.LOGIN_ATTEMPT] : (state, payload) => {
-        return Object.assign({}, state, {
-            isFetching: true,
-            hasFailed : false
-        })
+        return { ...state, isFetching: true, hasFailed : false }
     },
 
     [constants.LOGIN_SUCCESSFUL] : (state, payload) => {
-        return Object.assign({}, state, {
-            isFetching: false,
-            hasFailed : false,
-            username : payload.username
-        })
+        return { ...state, isFetching: false, hasFailed : false, username : payload.username}
     },
 
     [constants.LOGIN_FAILED] : (state, payload) => {

@@ -5,17 +5,16 @@ import { connect }                                          from 'react-redux'
 import { Container, Message, Button, Dimmer, Loader, Input} from 'semantic-ui-react'
 import * as actions                                         from './store/actions'
 
-import './style.scss';
 
 const mapStateToProps = (state) => {
-    return state.authentication
+    return state.login
 }
 
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators(actions, dispatch)
 }
 
-export class LoginView extends React.Component {
+export class Login extends React.Component {
 
     constructor(props) {
         super(props)
@@ -53,7 +52,6 @@ export class LoginView extends React.Component {
                     <form className="ui form">
                         <div className="field">
                             <h1>Login</h1>
-                            <label>Username</label>
                             <Input 
                                 type="text"
                                 placeholder='Username' 
@@ -63,7 +61,6 @@ export class LoginView extends React.Component {
                             />
                         </div>
                         <div className="field">
-                            <label>Password</label>
                             <Input 
                                 type="password"
                                 placeholder='Password' 
@@ -86,4 +83,4 @@ export class LoginView extends React.Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginView)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

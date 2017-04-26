@@ -1,5 +1,7 @@
 import React from 'react';
-import {Grid} from 'semantic-ui-react'
+import {Container } from 'semantic-ui-react';
+import PageHeader from  '../PageHeader';
+
 
 import './style.scss'
 
@@ -10,11 +12,12 @@ export default class Layout extends React.Component {
 
     render() {
         return (
-            <Grid padded>
-                <div id="main-container">
+            <Container id='main-container' >
+                <PageHeader id='page-header' />
+                <div id="page-body">
                     {this.props.children}
                 </div>
-            </Grid>
+            </Container>
         );
     }
 }

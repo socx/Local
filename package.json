@@ -11,7 +11,7 @@
     "compile": "cross-env NODE_ENV=production webpack --config webpack.config.prod.babel.js",
     "compile-dev": "cross-env NODE_ENV=development webpack --config webpack.config.dev.babel.js --progress",
     "serve": "cross-env NODE_ENV=production webpack-dev-server --content-base dist/ --config webpack.config.prod.babel.js --port 2014",
-    "serve:dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.babel.js",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.babel.js",
     "lint": "eslint **/**.js",
     "test": "jest",
     "coverage": "jest --coverage",

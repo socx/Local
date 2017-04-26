@@ -6,8 +6,8 @@ import { connect }                                                  from 'react-
 import UrlSearchParams                                              from 'main/components/UrlSearchParams';
 import Layout                                                       from 'main/components/Layout';
 import ManageView                                                   from 'manage';
-import LoginView                                                    from 'authentication';
-import * as authActions                                             from 'authentication/store/actions';
+import Login                                                        from 'login';
+import * as authActions                                             from 'auth/actions';
 
 
 const mapStateToProps = (state, props) => {
@@ -16,9 +16,9 @@ const mapStateToProps = (state, props) => {
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    authActions: bindActionCreators(authActions, dispatch),
-});
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators(authActions, dispatch)
+}
 
 export class Router extends React.Component {
     constructor(props) {
@@ -26,13 +26,13 @@ export class Router extends React.Component {
     }
     
     requireLogin(nextState, replaceState) {
-        if(!this.props.store.getState().authentication.token) {
-            browserHistory.push('#/login');
+        if(!this.props.store.getState().auth.token) {
+            browserHistory.push('#/');
         }
     }
 
     requireLogout(nextState, replaceState) {
-        if(this.props.store.getState().authentication.token) {
+        if(this.props.store.getState().auth.token) {
           browserHistory.push('#/manage');
         }
     }
@@ -47,16 +47,16 @@ export class Router extends React.Component {
             let username = queryParams.get('username');
             let token = queryParams.get('token');
 
-            if (this.props.store.getState().authentication.token) {
+            if (this.props.store.getState().auth.token) {
                 browserHistory.push(currentLocation.hash);
             }
             else if(username && token)
             {
-                this.props.authActions.setAuthToken(token, username);
+                this.props.setAuthToken(token, username);
                 browserHistory.push(currentLocation.hash);
             }
             else {
-                browserHistory.push('#/login');
+                browserHistory.push('#/');
             }
         }
     }
@@ -65,8 +65,8 @@ export class Router extends React.Component {
         return (
             <ReactRouter history={this.props.history}>
                 <Route path="/" component={Layout}>
-                    <IndexRoute component={LoginView} onEnter={this.requireLogout.bind(this)} />
-                    <Route path='login' component={LoginView} onEnter={this.requireLogin.bind(this)} />
+                    <IndexRoute component={Login} onEnter={this.requireLogout.bind(this)} />
+                    <Route path='login' component={Login} onEnter={this.requireLogout.bind(this)} />
                     <Route path='manage' component={ManageView} onEnter={this.requireLogin.bind(this)} />
                 </Route>
             </ReactRouter>

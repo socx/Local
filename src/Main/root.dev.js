@@ -13,7 +13,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const finalCreateStore = composeEnhancers(
     applyMiddleware(thunk, routerMiddleware(browserHistory)),
-    persistState('authentication')
+    persistState('auth')
 )(createStore);
 
 function getDebugSessionKey() {

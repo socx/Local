@@ -1,7 +1,7 @@
-import apiConfig from 'main/components/Settings';
-import * as mainActions from 'main/store/actions';
-import constants from './constants';
 import { push } from 'react-router-redux';
+import apiConfig from 'main/components/Settings';
+import * as authActions from 'auth/actions';
+import constants from './constants';
 
 export const usernameChanged = (username) => {
     return{ type : constants.USERNAME_CHANGED, payload: { username }}
@@ -9,23 +9,6 @@ export const usernameChanged = (username) => {
 
 export const passwordChanged = (password) => {
     return{ type : constants.PASSWORD_CHANGED, payload: { password }}
-}
-
-export function setAuthToken(token, username) {
-    return {
-        type: constants.SET_AUTH_TOKEN,
-        payload: {
-            token: token,
-            username: username
-        }
-    };
-}
-
-export function clearAuthToken() {
-    return (dispatch) => {
-        dispatch({ type: constants.CLEAR_AUTH_TOKEN })
-        dispatch(mainActions.resetState())
-    };
 }
 
 export function login(username, password) {
@@ -39,7 +22,7 @@ export function login(username, password) {
 
             let payload = { username: username, token: Math.random().toString(18).substr(2, 32) };
             dispatch({ type: constants.LOGIN_SUCCESSFUL, payload });
-            dispatch(setAuthToken(payload.token, payload.username));
+            dispatch(authActions.setAuthToken(payload.token, payload.username));
             dispatch(push('/manage'));
         }  else {
             dispatch({ type: constants.LOGIN_ATTEMPT, username, password });

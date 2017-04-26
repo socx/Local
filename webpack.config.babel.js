@@ -13,8 +13,10 @@ const config = {
         alias: {
             main: resolve('./src/Main'),
             layout: resolve('./src/Main/components/Layout'),
-            authentication: resolve('./src/Authentication'),
+            auth: resolve('./src/Auth'),
+            login: resolve('./src/Login'),
             manage: resolve('./src/Manage'),
+            images: resolve('./src/Images'),
             node_modules: resolve('./node_modules')
         },
         extensions: ['','.js', '.jsx']
