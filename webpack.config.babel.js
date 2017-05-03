@@ -15,6 +15,7 @@ const config = {
             auth: resolve('./src/Auth'),
             login: resolve('./src/Login'),
             manage: resolve('./src/Manage'),
+            members: resolve('./src/members'),
             images: resolve('./src/Images'),
             node_modules: resolve('./node_modules')
         },

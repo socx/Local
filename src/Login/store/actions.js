@@ -23,7 +23,7 @@ export function login(username, password) {
             let payload = { username: username, token: Math.random().toString(18).substr(2, 32) };
             dispatch({ type: constants.LOGIN_SUCCESSFUL, payload });
             dispatch(authActions.setAuthToken(payload.token, payload.username));
-            dispatch(push('/manage'));
+            dispatch(push('/members'));
         }  else {
             dispatch({ type: constants.LOGIN_ATTEMPT, username, password });
 
@@ -42,7 +42,7 @@ export function login(username, password) {
                         let payload = { username: username, token: authToken };
                         dispatch({ type: constants.LOGIN_SUCCESSFUL, payload });
                         dispatch(setAuthToken(payload.token, payload.username));
-                        dispatch(push('/manage'));
+                        dispatch(push('/members'));
 
                     });
                 }
