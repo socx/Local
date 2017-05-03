@@ -9,13 +9,7 @@ import ManageView                                                   from 'manage
 import Login                                                        from 'login';
 import * as authActions                                             from 'auth/actions';
 
-/*
-const mapStateToProps = (state, props) => {
-    return {
-        routing: state.routing
-    }
-}
-*/
+
 const mapDispatchToProps = dispatch => {
     return bindActionCreators(authActions, dispatch)
 }
