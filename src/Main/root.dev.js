@@ -12,7 +12,7 @@ import reducer from 'main/store/reducer';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const finalCreateStore = composeEnhancers(
-    applyMiddleware(thunk, routerMiddleware(browserHistory)),
+    applyMiddleware(thunk, routerMiddleware(hashHistory)),
     persistState('auth')
 )(createStore);
 
@@ -23,7 +23,7 @@ function getDebugSessionKey() {
 
 const store = finalCreateStore(reducer, {});
 
-const history = syncHistoryWithStore(browserHistory, store);
+const history = syncHistoryWithStore(hashHistory, store);
 
 ReactDOM.render(
     <Provider store={store}>

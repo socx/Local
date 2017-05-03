@@ -10,14 +10,14 @@ import Router from 'components/Router';
 import reducer from 'store/reducer';
 
 const finalCreateStore = compose(
-    applyMiddleware(thunk, routerMiddleware(browserHistory)),
+    applyMiddleware(thunk, routerMiddleware(hashHistory)),
     persistState('authentication')
 )(createStore);
 
 const store = finalCreateStore(reducer, {});
 
 
-const history = syncHistoryWithStore(browserHistory, store);
+const history = syncHistoryWithStore(hashHistory, store);
 
 ReactDOM.render(
     <Provider store={store}>
