@@ -1,10 +1,11 @@
 import React, {Component}       from 'react';
-import { Icon, Menu, Dropdown }    from 'semantic-ui-react';
+import { Icon, Menu, Image, Dropdown }    from 'semantic-ui-react';
 import { connect }              from 'react-redux';
-import { bindActionCreators }   from 'redux'
+import { bindActionCreators }   from 'redux';
 import * as authActions         from 'auth/actions';
 import * as mainActions         from 'main/store/actions';
 import Branding from '../Branding';
+import LogoImg from 'images/logo.png';
 
 const mapStateToProps = (state) => ({
     auth: state.auth,
@@ -19,28 +20,23 @@ export class PageHeader extends Component {
 
     render () {
         return (
-           <Menu>
-                <Menu.Item>                    
-                    <Branding />
-                </Menu.Item>
+            <div className='page-header'>
+                <Branding />
                 { this.props.auth.token &&
-                <Menu.Menu position='right'>
-                    <Menu.Item name='mail'>
-                        <Icon name='mail' />
-                    </Menu.Item>
-                    <Menu.Item name='bell'>
-                        <Icon name='bell' />
-                    </Menu.Item>
-                    <Dropdown item  text='Username'>
-                        <Dropdown.Menu>
-                            <Dropdown.Item icon='user' text='Profile' />
-                            <Dropdown.Item icon='key' text='Logout' onClick={this.props.resetState} />
-                        </Dropdown.Menu>
-                    </Dropdown>                    
-                    
-                </Menu.Menu>
+                <div className='user-profile'>
+                    <Menu.Menu position='right'>
+                        <Dropdown item  text='Username'>
+                            <Dropdown.Menu>
+                                <Dropdown.Item icon='user' text='Profile' />
+                                <Dropdown.Item icon='key' text='Logout' onClick={this.props.resetState} />
+                            </Dropdown.Menu>
+                        </Dropdown> 
+                        <Menu.Item>
+                        </Menu.Item>
+                    </Menu.Menu>
+                </div>
                 }
-            </Menu>
+            </div>
         )
     }
 }

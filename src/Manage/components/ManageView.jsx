@@ -2,7 +2,11 @@ import React from 'react';
 
 const ManageView = () => {
     return (
-        <div>This is the manage</div>
+        <div id='manage'>
+            <h1 className='page-title'> Manage <small>manage member information</small></h1>
+            
+            This is the manage
+        </div>
     )
 }
 
