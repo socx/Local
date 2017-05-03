@@ -9,25 +9,25 @@ import ManageView                                                   from 'manage
 import Login                                                        from 'login';
 import * as authActions                                             from 'auth/actions';
 
-
+/*
 const mapStateToProps = (state, props) => {
     return {
         routing: state.routing
     }
 }
-
+*/
 const mapDispatchToProps = dispatch => {
     return bindActionCreators(authActions, dispatch)
 }
 
-export class Router extends React.Component {
+class Router extends React.Component {
     constructor(props) {
         super(props);
     }
     
     requireLogin(nextState, replaceState) {
         if(!this.props.store.getState().auth.token) {
-            browserHistory.push('#/');
+            browserHistory.push('#/login');
         }
     }
 
@@ -56,7 +56,7 @@ export class Router extends React.Component {
                 browserHistory.push(currentLocation.hash);
             }
             else {
-                browserHistory.push('#/');
+                browserHistory.push('#/login');
             }
         }
     }
@@ -74,4 +74,4 @@ export class Router extends React.Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Router);
+export default connect(null, mapDispatchToProps)(Router);
