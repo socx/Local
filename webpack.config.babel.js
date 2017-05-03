@@ -1,7 +1,6 @@
 import webpack, { ProvidePlugin } from 'webpack';
 import { resolve } from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import validate from 'webpack-validator';
 
 const config = {
     entry: [
@@ -55,4 +54,5 @@ const config = {
     }
 };
 
-export default validate(config);
+//export default validate(config);
+export default config;

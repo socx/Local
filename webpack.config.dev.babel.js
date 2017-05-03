@@ -1,7 +1,5 @@
 import { DefinePlugin } from 'webpack';
 import baseConfig from './webpack.config.babel.js';
-import validate from 'webpack-validator';
-
 const config = {
     ...baseConfig,
     plugins: [
@@ -19,4 +17,4 @@ const config = {
     devtool: 'source-map'
 }
 
-export default validate(config);
+export default config;
