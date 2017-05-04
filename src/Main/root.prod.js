@@ -6,12 +6,14 @@ import persistState from 'redux-localstorage';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
 import { hashHistory, browserHistory } from 'react-router';
 import thunk from 'redux-thunk';
-import Router from 'components/Router';
-import reducer from 'store/reducer';
+import Router from 'main/components/Router';
+import reducer from 'main/store/reducer';
+
+import globalStyles from '../assets/global.css';
 
 const finalCreateStore = compose(
     applyMiddleware(thunk, routerMiddleware(hashHistory)),
-    persistState('authentication')
+    persistState('auth')
 )(createStore);
 
 const store = finalCreateStore(reducer, {});

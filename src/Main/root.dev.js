@@ -9,6 +9,8 @@ import thunk from 'redux-thunk';
 import Router from 'main/components/Router';
 import reducer from 'main/store/reducer';
 
+import globalStyles from '../assets/global.css';
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const finalCreateStore = composeEnhancers(
