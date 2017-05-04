@@ -4,7 +4,6 @@ import { bindActionCreators }                                       from 'redux'
 import { connect }                                                  from 'react-redux';
 import UrlSearchParams                                              from 'main/components/UrlSearchParams';
 import Layout                                                       from 'main/components/Layout';
-import ManageView                                                   from 'manage';
 import MembersView                                                  from 'members';
 import Login                                                        from 'login';
 import * as authActions                                             from 'auth/actions';
@@ -61,7 +60,6 @@ class Router extends React.Component {
                 <Route path="/" component={Layout}>
                     <IndexRoute component={Login} onEnter={this.requireLogout.bind(this)} />
                     <Route path='login' component={Login} onEnter={this.requireLogout.bind(this)} />
-                    <Route path='manage' component={ManageView} onEnter={this.requireLogin.bind(this)} />
                     <Route path='members' component={MembersView} onEnter={this.requireLogin.bind(this)} />
                 </Route>
             </ReactRouter>
